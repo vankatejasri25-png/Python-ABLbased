@@ -1,0 +1,596 @@
+PYTHON ACTIVITY-BASED LEARNING
+10 Complete Case Study Solutions
+
+Selected case studies
+1.	1. Progressive Electricity Billing
+2.	2. Employee Payroll and Deduction Analysis
+3.	3. Retail Billing with Discount Rules
+4.	4. Examination Result and Grace-Mark Validation
+5.	5. ATM Transaction Sequence Simulation
+6.	6. Warehouse Inventory Reconciliation
+7.	7. Student Performance Trend Analysis
+8.	8. Password Policy Validation Engine
+9.	9. Student Marks Matrix Analysis
+10.	10. Food Waste Monitoring System
+
+ 1. Progressive Electricity Billing
+1. Problem Statement
+Develop a program that calculates a household electricity bill using progressive consumption slabs, a fixed charge, a surcharge, and a rebate. It should also compare the current bill with the previous bill and flag an unusual increase.
+2. Objectives
+•	Calculate energy charges using progressive slabs.
+•	Add a fixed charge and apply a surcharge/rebate rule.
+•	Compare bills and flag a significant increase.
+3. Assumptions
+•	Units are non-negative whole numbers.
+•	Rates: first 100 units ₹1.50/unit; next 100 ₹2.50/unit; units above 200 ₹4.00/unit.
+•	Fixed charge is ₹50. A 5% surcharge applies when consumption exceeds 250 units; otherwise no surcharge.
+•	An unusual increase means the current bill is more than 25% above the previous bill.
+4. Algorithm
+1. Read current and previous units.
+2. Calculate slab-wise energy charges.
+3. Add fixed charge and apply the surcharge condition.
+4. Calculate the previous bill using the same rules.
+5. Compare bills and print the result.
+5. Flowchart
+ 
+6. Pseudocode
+name = input("Enter student name: ")
+marks = float(input("Enter aggregate marks: "))
+subject = float(input("Enter minimum subject score: "))
+attendance = float(input("Enter attendance percentage: "))
+income = float(input("Enter family annual income: "))
+
+if marks >= 75 and subject >= 40 and attendance >= 75 and income <= 200000:
+    print("Student is Eligible for Scholarship")
+    print("Student Name:", name)
+    print("Aggregate Marks:", marks)
+else:
+    print("Student is Not Eligible for Scholarship")
+7. Python Source Code
+marks = float(input("Enter aggregate marks: "))
+subject = float(input("Enter subject score: "))
+attendance = float(input("Enter attendance: "))
+income = float(input("Enter family income: "))
+
+if marks >= 75 and subject >= 40 and attendance >= 75 and income <= 200000:
+    print("Scholarship Eligible")
+else:
+    print("Scholarship Not Eligible")
+8. Test Cases
+
+Aggregate Marks	Subject Score	Attendance (%)	Family Income (₹)	Expected Output
+85	60	90	150000	Scholarship Eligible
+65	50	85	100000	Scholarship Not Eligible
+  
+
+
+
+10. Conclusion
+The program applies progressive rates and a conditional surcharge, then compares monthly bills to identify a potentially unusual increase.
+
+ 2. Employee Payroll and Deduction Analysis
+1. Problem Statement
+Create a payroll program that calculates gross salary from basic pay, allowances, overtime, and incentives, applies a simple deduction policy, and prints a salary statement.
+2. Objectives
+•	Compute gross earnings.
+•	Apply deductions using conditions.
+•	Display gross pay, deductions, and net pay.
+3. Assumptions
+•	Basic pay, allowances, overtime pay, and incentives are non-negative.
+•	Gross salary is their sum.
+•	Deduction is 5% of gross up to ₹30,000; above ₹30,000, deduction is 8% of gross.
+4. Algorithm
+1. Read salary components.
+2. Validate that values are non-negative.
+3. Add components to calculate gross pay.
+4. Choose the deduction rate based on gross pay.
+5. Subtract deduction and print the salary statement.
+5. Flowchart
+ 
+6. Pseudocode
+    BEGIN
+INPUT units and previous bill
+IF units <= 100, bill = units * 2
+ELSE IF units <= 200, bill = 200 + (units-100)*3
+ELSE, bill = 500 + (units-200)*5
+ADD fixed charge and surcharge
+IF bill > 1000, APPLY rebate
+DISPLAY current bill
+COMPARE with previous bill
+DISPLAY unusual increase if bill > 1.5 * previous bill
+END
+7. Python Source Code
+u = int(input("Enter units: "))
+p = float(input("Enter previous bill: "))
+b = u*2 if u <= 100 else 200+(u-100)*3 if u <= 200 else 500+(u-200)*5
+b += 50 + (b+50)*0.05 - (50 if b+50 > 1000 else 0)
+print("Bill:", round(b, 2), "Unusual Increase" if b > 1.5*p else "Normal Bill")
+
+8. Test Cases
+   Input:
+Enter units: 80
+Enter previous bill: 200
+
+Output:
+Bill: 220.5 Normal Bill
+
+Input:
+Enter units: 250
+Enter previous bill: 800
+
+Output:
+Bill: 1312.5 Unusual Increase
+ 
+9. Output
+ 
+
+ 
+10. Conclusion
+The payroll program calculates earnings and applies the stated deduction bands to obtain net salary.
+
+ 3. Retail Billing with Discount Rules
+1. Problem Statement
+Develop an itemized retail bill for multiple products. Apply a discount when the pre-tax subtotal reaches a threshold, limit the discount to a maximum concession, and calculate tax on the discounted amount.
+2. Objectives
+•	Calculate line totals and subtotal.
+•	Apply threshold-based discount with a cap.
+•	Calculate tax and final invoice amount.
+3. Assumptions
+•	The example uses three products with quantity and unit price.
+•	A 10% discount applies when subtotal is at least ₹1,000; maximum discount is ₹150.
+•	Tax is 5% of the subtotal after discount.
+4. Algorithm
+1. Store product names, prices, and quantities in a list.
+2. Calculate each line total and subtotal.
+3. Apply discount condition and maximum cap.
+4. Calculate tax and final total.
+5. Print the itemized invoice.
+5. Flowchart
+ 
+6. Pseudocode
+BEGIN
+INPUT consultation, diagnosis, treatment charges
+CALCULATE total bill
+IF total bill > 5000, apply 10% concession
+CALCULATE final bill
+IF final bill <= 3000, classify as Low
+ELSE IF final bill <= 7000, classify as Medium
+ELSE classify as High
+DISPLAY final bill and classification
+END
+7. Python Source Code
+c = float(input("Consultation charge: "))
+d = float(input("Diagnostic charge: "))
+t = float(input("Treatment charge: "))
+b = c + d + t
+if b > 5000: b *= 0.90
+print("Final Bill:", b)
+print("Category:", "Low" if b <= 3000 else "Medium" if b <= 7000 else "High")
+8. Test Cases
+Input:
+Consultation: 500
+Diagnostic: 1000
+Treatment: 1000
+Output:
+Final Bill: 2500.0
+Category: Low
+Input:
+Consultation: 1000
+Diagnostic: 2000
+Treatment: 3000
+
+Output:
+Final Bill: 5400.0
+Category: Medium
+
+9. Output
+ 
+ 
+
+10. Conclusion
+The invoice program demonstrates lists, loops, arithmetic, conditional discounts, and a capped concession before tax.
+
+ 4. Examination Result and Grace-Mark Validation
+1. Problem Statement
+Process marks in multiple subjects, check subject-wise pass criteria, apply a limited grace-mark policy, and generate a final result without exceeding maximum marks.
+2. Objectives
+•	Check each subject against the pass mark.
+•	Use grace marks only within the stated limit.
+•	Calculate total, percentage, and final status.
+3. Assumptions
+•	Marks are out of 100 and the pass mark is 40 per subject.
+•	At most 3 grace marks may be added to one subject that is short by no more than 3 marks.
+•	Final marks cannot exceed 100.
+4. Algorithm
+1. Store subject marks in a dictionary.
+2. For each subject, if marks are 37–39, add enough grace marks to reach 40, within the 3-mark limit.
+3. Check whether all subjects pass.
+4. Calculate total and percentage and display the result.
+5. Flowchart
+ 
+6. Pseudocode
+ BEGIN
+INPUT basic salary, allowances, overtime, incentives
+CALCULATE gross salary
+IF gross salary <= 20000, deduction = 5%
+ELSE deduction = 10%
+CALCULATE net salary
+DISPLAY gross salary, deduction and net salary
+END
+7. Python Source Code
+ b = float(input("Basic salary: "))
+a = float(input("Allowances: "))
+o = float(input("Overtime: "))
+i = float(input("Incentives: "))
+g = b + a + o + i
+d = g * 0.05 if g <= 20000 else g * 0.10
+print("Gross:", g, "Deduction:", d, "Net Salary:", g-d)
+8. Test Cases
+Input:
+Basic salary: 15000
+Allowances: 2000
+Overtime: 1000
+Incentives: 500
+Output:
+Gross: 18500.0
+Deduction: 925.0
+Net Salary: 17575.0
+
+9. Output
+
+ 
+10. Conclusion
+The program validates marks, applies the defined grace rule, and determines the result using subject-wise pass conditions.
+
+ 5. ATM Transaction Sequence Simulation
+1. Problem Statement
+Simulate a series of deposits and withdrawals, update an account balance, reject invalid or unaffordable withdrawals, and summarize accepted and rejected transactions.
+2. Objectives
+•	Update balance after each transaction.
+•	Reject invalid amounts and withdrawals exceeding balance.
+•	Report final balance and transaction counts.
+3. Assumptions
+•	Opening balance is ₹5,000.
+•	Transactions are tuples of type and amount.
+•	Withdrawal limit per transaction is ₹3,000.
+•	Amounts must be positive.
+4. Algorithm
+1. Set the opening balance and counters.
+2. Process each transaction tuple.
+3. Accept deposits with positive amounts.
+4. Accept withdrawals only if within limit and balance.
+5. Print each decision and final summary.
+5. Flowchart
+ 
+6. PseudocodeEND
+7. BEGIN
+INPUT monthly usage
+CALCULATE cost for Plan A and Plan B
+IF usage <= 100, Plan A costs 200
+ELSE add excess usage charges
+IF usage <= 200, Plan B costs 300
+ELSE add excess usage charges
+COMPARE plan costs
+DISPLAY the cheapest plan
+END
+Python Source Code
+u = int(input("Enter monthly usage in units: "))
+a = 200 if u <= 100 else 200 + (u-100)*2
+b = 300 if u <= 200 else 300 + (u-200)*1
+print("Plan A:", a, "Plan B:", b)
+print("Best Plan:", "A" if a <= b else "B")
+
+8. Test Cases
+Input:
+Enter monthly usage in units: 80
+Output:
+Plan A: 200
+Plan B: 300
+Best Plan: A
+Input:
+Enter monthly usage in units: 250
+
+Output:
+Plan A: 500
+Plan B: 350
+Best Plan: B
+9. Output
+
+
+10. Conclusion
+The simulation tracks the account balance accurately and rejects transactions that violate the amount, balance, or withdrawal-limit rules.
+
+ 6. Warehouse Inventory Reconciliation
+1. Problem Statement
+Compare opening stock, received stock, dispatched stock, and physically counted closing stock for several products. Detect discrepancies and calculate replenishment needed to reach a target stock.
+2. Objectives
+•	Calculate expected closing stock.
+•	Compare expected and physical stock.
+•	Calculate discrepancies and target replenishment.
+3. Assumptions
+•	Expected stock = opening + received − dispatched.
+•	A negative expected stock is invalid.
+•	Target stock is 20 units for each product.
+•	Discrepancy = physical closing − expected closing.
+4. Algorithm
+1. Store each product record as a tuple.
+2. Calculate expected closing quantity.
+3. Compare with physical closing quantity.
+4. Calculate replenishment to target if stock is below target.
+5. Display reconciliation results.
+5. Flowchart
+ 
+6. Pseudocode
+BEGIN
+INPUT distance, age, class, cancellation
+CALCULATE fare based on distance
+ADD reservation fee
+IF age >= 60, APPLY 20% concession
+IF cancellation = yes, ADD cancellation penalty
+DISPLAY final fare
+END
+7. Python Source Code
+d = int(input("Enter distance: "))
+age = int(input("Enter age: "))
+c = input("Enter class (A/B): ").upper()
+fare = d * (3 if c == "A" else 2)
+if age >= 60:
+    fare *= 0.8
+fare += 50
+if input("Cancel ticket? (yes/no): ").lower() == "yes":
+    fare += 100
+print("Final Fare:", round(fare, 2))
+8. Test Cases
+Input:
+Distance: 100
+Age: 30
+Class: B
+Cancel ticket? no
+Output:
+Final Fare: 250.0
+Input:
+9. Output
+ 
+
+10. Conclusion
+The program uses tuples and arithmetic to reconcile stock records, identify mismatches, and calculate replenishment requirements.
+
+ 7. Student Performance Trend Analysis
+1. Problem Statement
+Compare student scores across three assessments, calculate changes, identify subjects consistently below a defined threshold, and classify the overall trend.
+2. Objectives
+•	Calculate improvement or decline between assessments.
+•	Identify consistently weak subjects.
+•	Classify performance using average marks.
+3. Assumptions
+•	Scores are out of 100.
+•	The dataset contains three assessments per subject.
+•	A subject is consistently weak if all three scores are below 40.
+•	Average ≥ 75 is High, ≥ 50 is Moderate, otherwise Needs Improvement.
+4. Algorithm
+1. Store subject scores as nested lists.
+2. Calculate change from first to last assessment.
+3. Check for consistently weak subjects.
+4. Calculate overall average and classify.
+5. Print a summary.
+5. Flowchart
+ 
+6. Pseudocode
+BEGIN
+INPUT product price and quantity
+CALCULATE total amount
+IF total >= 1000, APPLY 10% discount
+LIMIT discount to 200
+ADD 5% tax
+DISPLAY final bill
+END
+7. Python Source Code
+ p = float(input("Enter product price: "))
+q = int(input("Enter quantity: "))
+total = p * q
+discount = min(total * 0.10, 200) if total >= 1000 else 0
+bill = (total - discount) * 1.05
+print("Total Bill:", round(bill, 2))
+8. Test Cases
+Input:
+Price: 200
+Quantity: 22
+Output:
+Total Bill: 420.0
+
+9. Output
+ 
+
+10. Conclusion
+The analysis identifies score trends and consistently weak subjects and classifies overall performance using clear thresholds.
+
+ 8. Password Policy Validation Engine
+1. Problem Statement
+Validate sample passwords against minimum length, uppercase, lowercase, digit, special-character, repeated-character, and prohibited-substring rules. Report each failed rule.
+2. Objectives
+•	Check password length and character categories.
+•	Detect repeated consecutive characters.
+•	Report all failed policy conditions.
+3. Assumptions
+•	Minimum length is 8 characters.
+•	Password must contain uppercase, lowercase, digit, and one of !, @, #, $.
+•	Three identical consecutive characters are prohibited.
+•	The substring 'password' is prohibited regardless of letter case.
+4. Algorithm
+1. Read a sample password.
+2. Check each required condition.
+3. Check for three consecutive identical characters.
+4. Check prohibited substring case-insensitively.
+5. Print failures or valid status.
+5. Flowchart
+ 
+6. Pseudocode
+BEGIN
+INPUT material, labour, machine cost
+INPUT wastage percentage and selling price
+CALCULATE total production cost including wastage
+CALCULATE profit
+IF profit >= target, DISPLAY target achieved
+ELSE DISPLAY target not achieved
+DISPLAY cost and profit
+END
+7. Python Source Code
+m = float(input("Material cost: "))
+l = float(input("Labour cost: "))
+mc = float(input("Machine cost: "))
+w = float(input("Wastage percentage: "))
+s = float(input("Selling price: "))
+cost = (m + l + mc) * (1 + w / 100)
+profit = s - cost
+print("Total Cost:", round(cost, 2))
+print("Profit:", round(profit, 2))
+print("Target Achieved" if profit >= 500 else "Target Not Achieved")
+8. Test Cases
+Input:
+Material: 500
+Labour: 200
+Machine: 1005
+Wastage: 10
+Selling price: 1500
+Output:
+Total Cost: 880.0
+Profit: 620.0
+Target Achieved
+Input:
+Material: 600
+Labour: 300
+Machine: 200
+Wastage: 10
+Selling price: 1200
+Output:
+Total Cost: 1210.0
+Profit: -10.0
+Target Not Achieved
+
+9. Output
+ 
+ 
+10. Conclusion
+The validator checks multiple independent rules and reports specific failures, making the result more useful than a simple valid/invalid response.
+
+ 9. Student Marks Matrix Analysis
+1. Problem Statement
+Analyse a nested list of student marks across subjects. Calculate each student's total and average, calculate subject averages, identify the top performer, and flag subjects with low averages.
+2. Objectives
+•	Use a nested list to represent a marks matrix.
+•	Calculate row-wise and column-wise statistics.
+•	Identify top performer and low-average subjects.
+3. Assumptions
+•	Rows represent students and columns represent Python, Maths, and English.
+•	Each mark is between 0 and 100.
+•	A subject average below 50 is considered low.
+4. Algorithm
+1. Create the marks matrix and student/subject labels.
+2. Calculate each student's total and average.
+3. Calculate each subject's average.
+4. Identify the student with the highest total.
+5. List subjects with average below 50.
+5. Flowchart
+ 
+6. Pseudocode
+BEGIN
+INPUT expense in foreign currency
+INPUT exchange rate and conversion fee
+CONVERT expense into local currency
+ADD conversion fee
+COMPARE total expense with budget
+DISPLAY largest expense category
+END
+7. Python Source Code
+amount = float(input("Enter foreign expense: "))
+rate = float(input("Enter exchange rate: "))
+fee = float(input("Enter conversion fee: "))
+budget = float(input("Enter budget: "))
+total = amount * rate + fee
+print("Total Expense:", total)
+print("Within Budget" if total <= budget else "Over Budget")
+8. Test Cases
+
+Input:
+Foreign expense: 100
+Exchange rate: 80
+Fee: 50
+Budget: 10000
+Output:
+Total Expense: 8050.0
+Within Budget
+Input:
+Foreign expense: 150
+Exchange rate: 80
+Fee: 100
+Budget: 10000
+
+Output:
+Total Expense: 12100.0
+Over Budget
+9. Output
+ 
+ 
+
+
+10. Conclusion
+The marks matrix demonstrates nested-list processing, row and column calculations, and identification of the highest-performing student.
+
+ 10. Food Waste Monitoring System
+1. Problem Statement
+Compare meals prepared, meals served, and leftovers over several days. Calculate waste percentages and identify days where waste exceeds an acceptable threshold.
+2. Objectives
+•	Calculate leftover meals and waste percentage.
+•	Compare daily waste against a threshold.
+•	Summarize total waste over the period.
+3. Assumptions
+•	Meals prepared and served are non-negative integers.
+•	Leftovers = prepared − served.
+•	Waste percentage = leftovers / prepared × 100.
+•	A day is flagged if waste percentage exceeds 10%; prepared meals must be greater than zero.
+4. Algorithm
+1. Store daily prepared and served counts in a list of tuples.
+2. Calculate leftovers and percentage for each day.
+3. Flag waste percentages above 10%.
+4. Sum total prepared, served, and leftover meals.
+5. Print daily and overall results.
+5. Flowchart
+ 
+6. Pseudocode
+BEGIN
+INPUT venue, equipment, catering, transport and certificate costs
+INPUT sponsorship and participant contribution
+CALCULATE total cost
+CALCULATE shortfall after sponsorship
+CALCULATE minimum participants needed
+DISPLAY total cost and shortfall
+END
+7. Python Source Code
+v = float(input("Venue cost: "))
+e = float(input("Equipment cost: "))
+c = float(input("Catering cost: "))
+t = float(input("Transport cost: "))
+s = float(input("Sponsorship: "))
+fee = float(input("Contribution per participant: "))
+total = v + e + c + t
+shortfall = max(0, total - s)
+print("Total Cost:", total)
+print("Shortfall:", shortfall)
+print("Participants Needed:", int(shortfall / fee) + (shortfall % fee > 0))
+8. Test Cases
+Input:
+Venue: 5000
+Equipment: 2000
+Catering: 3000
+Transport: 1000
+Sponsorship: 5000
+Contribution: 100
+Output:
+Total Cost: 11000.0
+Shortfall: 6000.0
+Participants Needed: 60
+9. Output
+ 
+10. Conclusion
+The program calculates daily and overall food waste, flags high-waste days, and provides figures that can support better meal planning.
+
